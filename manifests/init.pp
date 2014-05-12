@@ -83,7 +83,9 @@ define concat(
   validate_bool($replace)
   validate_re($order, '^alpha$|^numeric$')
   validate_bool($ensure_newline)
-  validate_bool($show_diff)
+  if ! ($show_diff == undef ) {
+    validate_bool($show_diff)
+  }
   if $gnu {
     warning('The $gnu parameter to concat is deprecated and has no effect')
   }

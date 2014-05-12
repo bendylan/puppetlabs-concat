@@ -45,7 +45,9 @@ define concat::fragment(
     fail('$source is not a string or an Array.')
   }
   validate_string($order)
-  validate_bool($show_diff)
+  if ! ($show_diff == undef) {
+    validate_bool($show_diff)
+  }
   if $mode {
     warning('The $mode parameter to concat::fragment is deprecated and has no effect')
   }
